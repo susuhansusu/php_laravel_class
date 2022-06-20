@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
 class PostController extends Controller
@@ -29,12 +30,23 @@ class PostController extends Controller
             // return view('post create');
         }
 
-    public function store()
+    public function store(PostRequest $request)
         {
+
+            //$request->validate([
+            //    'title'=> 'required',
+            //    'body'=> 'required|min:5'
+            //],[
+            //    'title.required' => 'Fill the title.',
+             //   'body.required' => 'Fill the body.'
+            //]);
    
             $post = new Post();
-            $post->title = request('title');
-            $post->body = request('body');
+            //$post->title = request('title');
+            //$post->body = request('body');
+            $post->title = $request->title;
+            $post->body = $request->body;
+
             $post->created_at = now();
             $post->updated_at = now();
             $post->save();
@@ -50,13 +62,20 @@ class PostController extends Controller
             return view('posts.edit',compact('post'));
         }
 
-    public function update($id)
+    public function update(PostRequest $request,$id)
         {
    
+            //$request->validate([
+            //    'title'=> 'required',
+            //    'body'=> 'required|min:5'
+            //],[
+            //    'title.required' => 'Fill the title.',
+             //   'body.required' => 'Fill the body.'
+            //]);
             $post = Post::find($id);
 
-            $post->title = request('title');
-            $post->body = request('body');
+            $post->title = $request->title;
+            $post->body = $request->body;
             $post->updated_at = now();
             $post->save();
 
