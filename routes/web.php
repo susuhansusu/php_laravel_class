@@ -2,6 +2,7 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\PostController;
+use App\Http\Controllers\UserController;
 
 
 Route::get('/posts', [PostController::class,'index']);
@@ -20,6 +21,20 @@ Route::post('/posts/update/{id}', [PostController::class,'update']);
 
 //Route::delete('/posts/delete/{id}', [PostController::class,'destroy']);
 
-Route::get('/Post-show/{id}', [PostController::class,'show']);
+Route::get('/posts/show/{id}', [PostController::class, 'show']);
 
 //Route::resource('posts',PostController::class);
+
+//users
+Route::get('/users/create', [UserController::class,'create']);
+
+Route::post('/users/store', [UserController::class,'store']);
+
+Route::get('/users', [UserController::class,'index']);
+
+Route::get('/users/edit/{id}', [UserController::class,'edit']);
+
+Route::post('/users/update/{id}', [UserController::class,'update']);
+
+Route::delete('/users/{id}', [UserController::class, 'delete']);
+
