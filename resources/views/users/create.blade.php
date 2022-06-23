@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('title')
-    User Creation
-@endsection
+@section('title', 'User Create')
 
 @section('content')
 
@@ -10,7 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3>User Creation</h3>
+                <h3>User Create</h3>
             </div>
             <div class="card-body">
                 {{-- @if($errors->any())

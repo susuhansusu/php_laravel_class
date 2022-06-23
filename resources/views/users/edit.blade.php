@@ -1,8 +1,6 @@
 @extends('layouts.master')
 
-@section('title')
-    Home Page
-@endsection
+@section('title', 'User Edit')
 
 @section('content')
 
