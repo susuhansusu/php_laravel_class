@@ -14,6 +14,9 @@
                     <li class="nav-item">
                         <a class="nav-link" href="/users/create">Create A User</a>
                     </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/posts/create">Create A Post</a>
+                    </li>
                     @if(Auth::check())
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button"

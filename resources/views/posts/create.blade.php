@@ -1,36 +1,51 @@
-<h1>Create A Post Form</h1>
+@extends('layouts.master')
 
-<!-- @if($errors->any())
-    <ul>
-        @foreach($errors->all() as $error)
+@section('title', 'Post Create')
 
-        <li style="color:red"> {{$error}}</li>
+@section('content')
 
-        @endforeach
-    </ul>
+    <div class="container mt-5">
 
-@endif -->
+        <div class="card">
+            <div class="card-header">
+                <h3>Post Create</h3>
+            </div>
+            <div class="card-body">
+                {{-- @if($errors->any())
+                <ul>
+                    @foreach($errors->all() as $error)
+                    <li style="color: red;">{{ $error }}</li>
+                    @endforeach
+                </ul>
+                @endif --}}
 
+                <form action="/posts/store" method="POST">
+                    {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
+                    @csrf
 
-<form action="/posts/store" method="POST">
-    @csrf
-    @method('POST')
+                    <div class="mb-3">
+                        <label class="form-label">Title</Title></label>
+                        <input class="form-control @error('title') is-invalid @enderror" type="text" name="title" value="{{ old('title') }}">
+                        @error('title')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-    <label>Post Title</label>
-        <input type="text" name="title">
-        @error('title')
-            <div style="color: red">{{ $message}}</div>
-        @enderror
+                    <div class="mb-3">
+                        <label class="form-label">Body</label>
+                        <input class="form-control  @error('body') is-invalid @enderror" name="body" rows="5">{{ old('body') }}</input>
+                        @error('body')
+                        <div class="invalid-feedback">{{ $message }}</div>
+                        @enderror
+                    </div>
 
-        <br><br>
+                    <div class="d-flex justify-content-between">
+                        <button type="submit" class="btn btn-primary">Create a Post</button>
+                        <a href="/posts" class="btn btn-outline-secondary">Back</a>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
 
-    <label>Post Body</label>
-        <textarea name="body"></textarea>
-        @error('body')
-            <div style="color: red">{{ $message}}</div>
-        @enderror
-        <br><br>
-
-    <button type="submit">Create</button>
-
-</form>
+@endsection

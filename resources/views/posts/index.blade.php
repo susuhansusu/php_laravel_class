@@ -1,18 +1,31 @@
+@extends('layouts.master')
 
-<h1> Post List</h1>
-<a href="/posts/create">Create A Post</a>
-<ul>
-@foreach($posts as $post)
-    <li>
-        <a href="/posts/show/{{ $post->id }}">{{ $post->title }}</a>
-        [<a href="/posts/edit/{{ $post->id }}">Edit</a>]
-        <form action="/posts/delete/{{ $post->id }}" method = "POST"
-        onsubmit="return confirm('Are you sure?')">
-        @method('DELETE')
-        
-        @csrf
-        <button type="submit">Delete</button>
-        <br><br>
-    </li>
+@section('title', 'Post List')
+
+@section('content')
+
+@foreach ($posts as $post)
+        <div>
+            <h3>
+                <a href="/posts/show/{{ $post->id }}">{{ $post->title }}</a>
+            </h3>
+            <p>{{ $post->body }}</p>
+
+            <div class="d-flex justify-content-end">
+                <a href="/posts/edit/{{ $post->id }}" class="btn btn-primary">Edit</a>
+                <form action="/posts/{{ $post->id }}"
+                    method="POST"
+                    onsubmit="return confirm('Are you sure to delete?')">
+                    @method('DELETE')
+                    {{-- <input type="hidden" name="_method" value="DELETE"> --}}
+                    @csrf
+                    <button type="submit" class="btn btn-outline-danger ms-2">Delete</button>
+                </form>
+            </div>
+
+        </div>
+    
+        <hr>
     @endforeach
-</ul>
+
+@endsection
