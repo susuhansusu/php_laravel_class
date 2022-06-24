@@ -30,7 +30,7 @@ class UserController extends Controller
             $user = new User();
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = $request->password;
+            $user->password = bcrypt($request->password);
 
             $user->created_at = now();
             $user->updated_at = now();
@@ -53,7 +53,7 @@ class UserController extends Controller
             $user = User::find($id);
             $user->name = $request->name;
             $user->email = $request->email;
-            $user->password = $request->password;
+            $user->password = bcrypt($request->password);
             $user->updated_at = now();
             $user->save();
 

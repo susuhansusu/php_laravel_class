@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\LoginRequest;
 
 class LoginController extends Controller
 {
@@ -15,7 +16,7 @@ class LoginController extends Controller
     }
 
     //store
-    public function store(Request $request)
+    public function store(LoginRequest $request)
     {
         $user = User::where('email', $request->email)->first();
 
@@ -31,6 +32,7 @@ class LoginController extends Controller
         if(! Auth::attempt($credentials)) {
             return redirect('login');
         }
+
 
         return redirect('/users');
     }

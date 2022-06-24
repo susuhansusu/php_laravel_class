@@ -41,7 +41,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input class="form-control  @error('password') is-invalid @enderror" name="password" rows="5">{{ old('password') }}</input>
+                        <input type="password" class="form-control  @error('password') is-invalid @enderror" name="password" rows="5">{{ old('password') }}</input>
                         @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

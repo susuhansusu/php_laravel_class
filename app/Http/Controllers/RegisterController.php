@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\User;
+use App\Http\Requests\UserRequest;
 
 
 
@@ -16,7 +17,7 @@ class RegisterController extends Controller
     }
 
     //store
-    public function store(Request $request)
+    public function store(UserRequest $request)
     {
         $user = new User();
         $user->name = $request->name;
