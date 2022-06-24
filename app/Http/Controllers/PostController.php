@@ -44,12 +44,17 @@ class PostController extends Controller
             $post = new Post();
             //$post->title = request('title');
             //$post->body = request('body');
-            $post->title = $request->title;
-            $post->body = $request->body;
+            // $post->title = $request->title;
+            // $post->body = $request->body;
 
-            $post->created_at = now();
-            $post->updated_at = now();
-            $post->save();
+            // $post->created_at = now();
+            // $post->updated_at = now();
+            // $post->save();
+
+            $post->create([
+                'title' => $request->title,
+                'body' => $request->body,
+            ]);
     
             return redirect('/posts');
         }
