@@ -23,6 +23,11 @@
             <h3>
                 <a href="/users/edit/{{ $user->id }}">{{ $user->name }}</a>
             </h3>
+            {{-- {{ $users->created_at->format('M d, Y') }} by Mark --}}
+            {{-- {{ $users->created_at->toDateString() }} by Mark --}}
+            {{-- {{ $users->created_at->toDateTimeString() }} by Mark --}}
+            {{-- {{ $users->created_at->toFormattedDateString() }} by Mark --}}
+            {{ $user->created_at->diffForHumans() }} by Mark
             <p>{{ $user->email }}</p>
 
             <div class="d-flex justify-content-end">

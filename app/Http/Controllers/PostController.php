@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
 
@@ -51,10 +52,14 @@ class PostController extends Controller
             // $post->updated_at = now();
             // $post->save();
 
-            $post->create([
-                'title' => $request->title,
-                'body' => $request->body,
-            ]);
+            // $post->create([
+            //     'title' => $request->title,
+            //     'body' => $request->body,
+            // ]);
+
+            //Post::create($request->except(['']));
+
+            Post::create($request->only(['title', 'body']));
     
             return redirect('/posts');
         }

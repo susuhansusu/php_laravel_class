@@ -5,10 +5,11 @@ use App\Http\Controllers\PostController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
+use App\Http\Middleware\myAuthMiddleware;
 
 ///////////Posts
 Route::get('/posts', [PostController::class,'index']);
-Route::get('/posts/create', [PostController::class,'create']);
+Route::get('/posts/create', [PostController::class,'create'])->middleware('myauth');
 Route::post('/posts/store', [PostController::class,'store']);
 //Route::post('/posts', [PostController::class,'store']);
 Route::get('/posts/edit/{id}', [PostController::class,'edit']);
