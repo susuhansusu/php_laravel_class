@@ -36,7 +36,8 @@ class UserController extends Controller
             $user->updated_at = now();
             $user->save();
     
-            return redirect('/users');
+            //return redirect('/');
+            return redirect('/users')->with('success', 'A User was created successfully.');
         }
 
 
