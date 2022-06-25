@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Http\Requests\PostRequest;
 use App\Models\Post;
+use Illuminate\Support\Facades\DB;
 
 class PostController extends Controller
 {
@@ -13,7 +14,10 @@ class PostController extends Controller
     public function index()
         {
             //$posts = Post::all();
-            $posts = Post::paginate(3);
+            $posts = DB::table('posts')
+                    ->join('users', 'posts.user_id', '=', 'users.id')
+                    ->select('posts.*', 'users.name as name')
+                    ->paginate(3);
             return view('posts.index', compact('posts'));
         }
 
@@ -105,8 +109,13 @@ class PostController extends Controller
     
     public function show($id)
     {
-        $post = Post::find($id);
-        return view('posts.show',compact('post'));
+        //$post = Post::find($id);
+        $posts = Post::where('posts.id', $id)
+                ->join('users', 'posts.user_id', '=', 'users.id')
+                ->select('posts.*', 'users.name as name')
+                ->get();
+
+        return view('posts.show',compact('posts'));
 
     }
     
