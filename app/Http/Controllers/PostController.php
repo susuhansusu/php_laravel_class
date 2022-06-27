@@ -14,10 +14,14 @@ class PostController extends Controller
     public function index()
         {
             //$posts = Post::all();
-            $posts = DB::table('posts')
-                    ->join('users', 'posts.user_id', '=', 'users.id')
-                    ->select('posts.*', 'users.name as name')
-                    ->paginate(3);
+            // $posts = DB::table('posts')
+            //         ->join('users', 'posts.user_id', '=', 'users.id')
+            //         ->select('posts.*', 'users.name as name')
+            //         ->paginate(3);
+            $posts = Post::select('posts.*', 'users.name as author')
+            ->join('users', 'posts.user_id', '=', 'users.id')
+            ->paginate(3);
+            
             return view('posts.index', compact('posts'));
         }
 
@@ -110,12 +114,12 @@ class PostController extends Controller
     public function show($id)
     {
         //$post = Post::find($id);
-        $posts = Post::where('posts.id', $id)
+        $post = Post::where('posts.id', $id)
                 ->join('users', 'posts.user_id', '=', 'users.id')
-                ->select('posts.*', 'users.name as name')
-                ->get();
+                ->select('posts.*', 'users.name as author')
+                ->first();
 
-        return view('posts.show',compact('posts'));
+        return view('posts.show',compact('post'));
 
     }
     

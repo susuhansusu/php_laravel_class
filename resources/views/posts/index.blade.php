@@ -9,8 +9,8 @@
             <h3>
                 <a href="/posts/show/{{ $post->id }}">{{ $post->title }}</a>
             </h3>
-            <i>{{$post->updated_at}}</i>
-            <b> {{$post->name}}</b>
+            <i>{{$post->updated_at->diffForHumans()}}</i> by 
+            <b> {{$post->author}}</b>
             <p>{{ $post->body }}</p>
 
 
