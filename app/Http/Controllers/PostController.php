@@ -11,16 +11,22 @@ use Illuminate\Support\Facades\DB;
 class PostController extends Controller
 {
     
-    public function index()
+    public function index(Request $request)
         {
             //$posts = Post::all();
             // $posts = DB::table('posts')
             //         ->join('users', 'posts.user_id', '=', 'users.id')
             //         ->select('posts.*', 'users.name as name')
             //         ->paginate(3);
-            $posts = Post::select('posts.*', 'users.name as author')
-            ->join('users', 'posts.user_id', '=', 'users.id')
-            ->orderby('id', 'desc')
+
+
+            // $posts = Post::select('posts.*', 'users.name as author')
+            // ->join('users', 'posts.user_id', '=', 'users.id')
+            // ->orderby('id', 'desc')
+            // ->paginate(3);
+
+            $posts = Post::where('title', 'like', '%' . $request->search . '%')
+            ->orderBy('id', 'desc')
             ->paginate(3);
             
             return view('posts.index', compact('posts'));

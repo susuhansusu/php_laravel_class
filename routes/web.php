@@ -6,6 +6,7 @@ use App\Http\Controllers\UserController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\myAuthMiddleware;
+use App\Http\Controllers\MyPostController;
 
 ///////////Posts
 // Route::get('/posts', [PostController::class,'index']);
@@ -39,8 +40,6 @@ Route::post('/users/update/{id}', [UserController::class,'update']);
 Route::delete('/users/{id}', [UserController::class, 'delete']);
 
 
-
-
 //////////Register
 Route::get('register', [RegisterController::class, 'create']);
 Route::post('register', [RegisterController::class, 'store']);
@@ -51,3 +50,6 @@ Route::get('login', [LoginController::class, 'create']);
 Route::post('login', [LoginController::class, 'store']);
 Route::get('logout', [LoginController::class, 'destroy']);
 
+
+//////////MyPosts
+Route::get('/myposts', [MyPostController::class, 'index']);
