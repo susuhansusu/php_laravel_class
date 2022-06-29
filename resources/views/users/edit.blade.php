@@ -33,7 +33,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Email</label>
-                        <input class="form-control  @error('email') is-invalid @enderror" name="email" rows="5" value="{{ $user->email }}">
+                        <input class="form-control @error('email') is-invalid @enderror" type="text" name="email" value="{{ $user->email }}">
                         @error('email')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
@@ -41,7 +41,7 @@
 
                     <div class="mb-3">
                         <label class="form-label">Password</label>
-                        <input class="form-control  @error('password') is-invalid @enderror" name="password" rows="5" value="{{ $user->password }}">
+                        <input type="password" class="form-control  @error('password') is-invalid @enderror" name="password" rows="5" value="{{ $user->password }}">
                         @error('password')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror

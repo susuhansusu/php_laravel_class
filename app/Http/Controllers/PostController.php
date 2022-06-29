@@ -20,6 +20,7 @@ class PostController extends Controller
             //         ->paginate(3);
             $posts = Post::select('posts.*', 'users.name as author')
             ->join('users', 'posts.user_id', '=', 'users.id')
+            ->orderby('id', 'desc')
             ->paginate(3);
             
             return view('posts.index', compact('posts'));
@@ -61,14 +62,16 @@ class PostController extends Controller
             // $post->updated_at = now();
             // $post->save();
 
-            // $post->create([
-            //     'title' => $request->title,
-            //     'body' => $request->body,
-            // ]);
+            $post->create([
+                'title' => $request->title,
+                'body' => $request->body,
+                //'user_id' => Auth::id(),
+                'user_id' => auth()->id(),
+            ]);
 
             //Post::create($request->except(['']));
 
-            Post::create($request->only(['title', 'body']));
+            //Post::create($request->only(['title', 'body']));
     
             return redirect('/posts');
         }
@@ -92,7 +95,6 @@ class PostController extends Controller
              //   'body.required' => 'Fill the body.'
             //]);
             $post = Post::find($id);
-
             $post->title = $request->title;
             $post->body = $request->body;
             $post->updated_at = now();

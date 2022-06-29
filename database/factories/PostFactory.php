@@ -4,6 +4,8 @@ namespace Database\Factories;
 
 use Illuminate\Database\Eloquent\Factories\Factory;
 
+use App\Models\User;
+
 /**
  * @extends \Illuminate\Database\Eloquent\Factories\Factory<\App\Models\Post>
  */
@@ -22,7 +24,7 @@ class PostFactory extends Factory
             // 'body' => $this->faker->text(100)
             'title' => 'My Title',
             'body' => 'My Body',
-            'user_id' => 1,
+            'user_id' => User::where('id' , rand(1 ,5))->first()->id,
         ];
     }
 }

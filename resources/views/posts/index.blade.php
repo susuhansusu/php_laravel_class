@@ -13,8 +13,7 @@
             <b> {{$post->author}}</b>
             <p>{{ $post->body }}</p>
 
-
-            @auth
+            @if($post->isOwnPost())
                 <div class="d-flex justify-content-end">
                     <a href="/posts/edit/{{ $post->id }}" class="btn btn-primary">Edit</a>
                     <form action="/posts/{{ $post->id }}"
@@ -26,7 +25,7 @@
                         <button type="submit" class="btn btn-outline-danger ms-2">Delete</button>
                     </form>
                 </div>
-            @endauth
+            @endif
 
         </div>
     
