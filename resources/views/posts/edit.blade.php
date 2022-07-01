@@ -8,7 +8,7 @@
 
         <div class="card">
             <div class="card-header">
-                <h3>User Edit</h3>
+                <h3>Post Edit</h3>
             </div>
             <div class="card-body">
                 {{-- @if($errors->any())
@@ -37,6 +37,15 @@
                         @error('body')
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
+                    </div>
+                    <div class="mb-3">
+                        <label class="form-label">Categories</label> 
+                                        
+                        <select class="form-select" name="category[]" multiple>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
                     </div>
 
                     <div class="d-flex justify-content-between">

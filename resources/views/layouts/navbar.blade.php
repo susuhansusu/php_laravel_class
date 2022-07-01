@@ -13,13 +13,16 @@
                     </li>
                     @auth
                         <li class="nav-item">
-                            <a class="nav-link" href="/users/create">Create A User</a>
+                            <a class="nav-link" href="/users/create">New User</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/posts/create">Create A Post</a>
+                            <a class="nav-link" href="/posts/create">New Post</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="/myposts">My Posts</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/categories/create">New Category</a>
                         </li>
                     @endauth
 

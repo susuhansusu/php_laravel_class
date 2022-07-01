@@ -7,6 +7,7 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\RegisterController;
 use App\Http\Middleware\myAuthMiddleware;
 use App\Http\Controllers\MyPostController;
+use App\Http\Controllers\CategoryController;
 
 ///////////Posts
 // Route::get('/posts', [PostController::class,'index']);
@@ -53,3 +54,13 @@ Route::get('logout', [LoginController::class, 'destroy']);
 
 //////////MyPosts
 Route::get('/myposts', [MyPostController::class, 'index']);
+
+
+
+//////////Categories
+Route::get('/categories', [CategoryController::class, 'index']);
+Route::get('/categories/create', [CategoryController::class,'create']);
+Route::post('/categories/store', [CategoryController::class,'store']);
+Route::get('/categories/edit/{id}', [CategoryController::class,'edit']);
+Route::post('/categories/update/{id}', [CategoryController::class,'update']);
+Route::delete('/categories/{id}', [CategoryController::class, 'destroy']);

@@ -38,6 +38,15 @@
                         <div class="invalid-feedback">{{ $message }}</div>
                         @enderror
                     </div>
+                    <div class="mb-3">
+                        <label class="form-label">Categories</label>                 
+                        <select class="form-select" name="category[]" multiple>
+                            @foreach ($categories as $category)
+                            <option value="{{ $category->id }}">{{ $category->name }}</option>
+                            @endforeach
+                        </select>
+                    </div>
+
 
                     <div class="d-flex justify-content-between">
                         <button type="submit" class="btn btn-primary">Create a Post</button>
