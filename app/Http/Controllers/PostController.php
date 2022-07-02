@@ -33,9 +33,7 @@ class PostController extends Controller
             // ->paginate(3);
 
             $posts = Post::where('title', 'like', '%' . $request->search . '%')
-            ->leftJoin('category_posts', 'category_posts.post_id', '=', 'posts.id')
-            ->leftJoin('categories', 'category_posts.category_id', '=', 'categories.id')
-            ->select('posts.*', 'category_posts.post_id', 'category_posts.category_id', 'categories.name as name')
+            ->select('posts.*')
             ->orderBy('id', 'desc')
             ->paginate(5);
 

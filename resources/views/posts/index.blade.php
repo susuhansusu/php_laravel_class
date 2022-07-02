@@ -30,7 +30,9 @@
                     <b> {{$post->author->name}}</b>
                     <p>{{ $post->body }}</p>
 
-                    <p>{{ $post->name }}</p>
+                    @foreach ($post->categories() as $category)
+                        <b>{{ $category->name }} , </b>
+                    @endforeach
 
 
 
