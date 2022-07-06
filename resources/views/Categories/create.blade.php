@@ -19,7 +19,7 @@
                 </ul>
                 @endif --}}
 
-                <form action="/categories/store" method="POST">
+                <form action="{{ route('categories.store') }}" method="POST">
                     {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
                     @csrf
 

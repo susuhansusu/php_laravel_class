@@ -22,7 +22,7 @@
                             <a class="nav-link" href="/myposts">My Posts</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="/categories/create">New Category</a>
+                            <a class="nav-link" href="{{ route('categories.create') }}">New Category</a>
                         </li>
                     @endauth
 

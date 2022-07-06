@@ -17,7 +17,7 @@ class CategoryController extends Controller
     {
         //
         $categories = Category::paginate(5);
-        return view('Categories.index', compact ('categories'));
+        return view('categories.index', compact ('categories'));
     }
 
     /**
@@ -28,7 +28,7 @@ class CategoryController extends Controller
     public function create()
     {
         //
-        return view('Categories.create');
+        return view('categories.create');
     }
 
     /**
@@ -40,8 +40,8 @@ class CategoryController extends Controller
     public function store(CategoryRequest $request)
     {
         //
-        $Category = new Category();
-        $Category->create([
+        $category = new Category();
+        $category->create([
             'name' => $request->name,
         ]);
 
@@ -70,7 +70,7 @@ class CategoryController extends Controller
         //
         $category = Category::find($id);
                 
-        return view('Categories.edit',compact('category'));
+        return view('categories.edit',compact('category'));
     }
 
     /**

@@ -19,9 +19,10 @@
                 </ul>
                 @endif --}}
 
-                <form action="/categories/update/{{ $category->id }}" method="POST">
+                <form action="/categories/{{ $category->id }}" method="POST">
                     {{-- <input type="hidden" name="_token" value="{{ csrf_token() }}"> --}}
                     @csrf
+                    @method('PUT')
 
                     <div class="mb-3">
                         <label class="form-label">Name</label>

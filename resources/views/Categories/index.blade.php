@@ -21,7 +21,7 @@
     @foreach ($categories as $category)
         <div>
             <h3>
-                <a href="/categories/edit/{{ $category->id }}">{{ $category->name }}</a>
+                <a href="/categories/{{ $category->id }}/edit">{{ $category->name }}</a>
             </h3>
             {{-- {{ $users->created_at->format('M d, Y') }} by Mark --}}
             {{-- {{ $users->created_at->toDateString() }} by Mark --}}
@@ -31,7 +31,7 @@
 
             @auth
                 <div class="d-flex justify-content-end">
-                    <a href="/categories/edit/{{ $category->id }}" class="btn btn-primary">Edit</a>
+                    <a href="/categories/{{ $category->id }}/edit" class="btn btn-primary">Edit</a>
                     <form action="/categories/{{ $category->id }}"
                         method="POST"
                         onsubmit="return confirm('Are you sure to delete?')">
