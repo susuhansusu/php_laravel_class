@@ -45,7 +45,7 @@ class CategoryController extends Controller
             'name' => $request->name,
         ]);
 
-        return redirect('categories');
+        return redirect('categories')->with('success', 'A category was created successfully.');
     }
 
     /**
@@ -88,7 +88,7 @@ class CategoryController extends Controller
         $category->updated_at = now();
         $category->save();        
 
-        return redirect('categories');
+        return redirect('categories')->with('success', 'A category was updated successfully.');
     }
 
     /**
@@ -102,6 +102,6 @@ class CategoryController extends Controller
         //
         Category::destroy($id);
 
-        return redirect('categories');
+        return redirect('categories')->with('success', 'A category was deleted successfully.');
     }
 }
