@@ -20,11 +20,10 @@ class PostFactory extends Factory
     {
         return [
             //
-            // 'title' => $this->faker->text(10),
-            // 'body' => $this->faker->text(100)
-            'title' => 'My Title',
-            'body' => 'My Body',
+            'title' => $this->faker->text(10),
+            'body' => $this->faker->text(100),
             'user_id' => User::where('id' , rand(1 ,5))->first()->id,
+            'image_path' => '/imageUpload/1.jpg',
         ];
     }
 }

@@ -28,13 +28,16 @@ class PostRequest extends FormRequest
     {
         return [
             'title'=> 'required',
-            'body'=> 'required|min:5'
+            'body'=> 'required|min:5',
+            'image_path' => 'required|file|mimes:jpg,jpeg,png'
+
         ];
     }
 
     public function message()
     {
         return [
+            'image_path.required' => 'Upload the image file.',
             'title.required' => 'Fill the title.',
             'body.required' => 'Fill the body.'
         ];

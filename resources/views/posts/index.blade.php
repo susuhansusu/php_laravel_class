@@ -12,7 +12,7 @@
             @if (count($posts) > 0)
             @foreach ($posts as $post)
             <div class="card mb-3">
-                <img src="/imageUpload/1.jpg"
+                <img src="{{$post->image_path}}"
                     class="card-img-top" alt="...">
                 <div class="card-body">
                     <h5 class="card-title h2">{{ $post->title }}</h5>
@@ -38,7 +38,7 @@
                         <div>
                             @if($post->isOwnPost())
                             <div class="d-flex justify-content-end">
-                                <a href="/posts/{{ $post->id }}/edit/" class="btn btn-outline-success">Edit</a>
+                                <a href="/posts/edit/{{ $post->id }}" class="btn btn-outline-success">Edit</a>
                                 <form action="/posts/{{ $post->id }}"
                                     method="POST"
                                     onsubmit="return confirm('Are you sure to delete?')">

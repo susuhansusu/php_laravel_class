@@ -81,14 +81,21 @@ class PostController extends Controller
 
             //Post::create($request->only(['title', 'body']));
 
-            $post = new Post();
+            $file = $request->file('image_path');
+            $filename = time() . '_' . $file->getClientOriginalName();
+            $dir = public_path('upload/images');
+            $file->move($dir, $filename);
+            $imagePath = '/upload/images' . '/' .$filename;
 
+            $post = new Post();
             $post = $post::create([
                 'title' => $request->title,
                 'body' => $request->body,
-                //'user_id' => Auth::id(),
                 'user_id' => auth()->id(),
+                'image_path' => $imagePath,
             ]);
+
+            //$post = auth()->user()->posts()->create($request->only('title', 'body','image_path'));
 
             foreach($request->category as $category)
             {
@@ -98,8 +105,6 @@ class PostController extends Controller
                 ]);
 
             }
-
-    
             return redirect('/posts');
         }
     
@@ -107,7 +112,7 @@ class PostController extends Controller
         {
    
             $post = Post::find($id);
-            $categories = Category::all();                
+            $categories = Category::all();             
             return view('posts.edit',compact('post', 'categories'));
         }
 
@@ -121,9 +126,16 @@ class PostController extends Controller
             //    'title.required' => 'Fill the title.',
              //   'body.required' => 'Fill the body.'
             //]);
+            // $file = $request->file('image_path');
+            // $filename = time() . '_' . $file->getClientOriginalName();
+            // $dir = public_path('upload/images');
+            // $file->move($dir, $filename);
+            // $imagePath = '/upload/images' . '/' .$filename;
+
             $post = Post::find($id);
             $post->title = $request->title;
             $post->body = $request->body;
+            //$post->image_path = $imagePath;
             $post->updated_at = now();
             $post->save();
 

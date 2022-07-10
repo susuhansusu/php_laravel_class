@@ -6,6 +6,7 @@
 
         <div class="card">
             <div class="card-body">
+                <img src="{{$post->image_path}}" class="card-img-top" alt="...">
                 <h3>{{ $post->title }}</h3>
                 <i>{{$post->updated_at->diffForHumans()}}</i> by 
                 <b> {{$post->author->name}}</b>
